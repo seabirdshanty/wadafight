@@ -1,0 +1,13 @@
+{
+  "name": "WADANOHARA BATTLE SIMULATOR",
+  "version": "0.0.5",
+  "main": "fish.html",
+  "window": {
+	"title": "WADANOHARA BATTLE SIMULATOR",
+    "width": 410,
+    "height": 600,
+	"frame": false,
+	"resizable": false,
+	"icon": "ico.png"
+	}
+}

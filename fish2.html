@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'-->
+<style>
+body {
+	background-image: url('bg.jpg');
+	font-family: 'Press Start 2P', sans-serif;
+	font-size: 0.8em;
+	font-weight: bold;
+	text-align: center;
+	/* border: 10px solid cornflowerblue; */
+	margin: 0; padding: 0;
+	overflow: hidden;
+}
+
+#container {
+	max-width: 350px;
+	border-radius: 0px 20px 0px 20px;
+	padding: 20px;
+	margin-top: 2em;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgba( 255, 255, 255, 0.5);
+	border: 3px dotted rgba( 255, 255, 255, 0.5);
+}
+
+ul, li {
+	font-size: 1em !important;
+	list-style-image: url('anch.gif');
+	padding: 5px;
+	}
+
+li {
+	margin-left: 10px;
+	padding-left: 1px;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+li:hover {
+	background-color: cornflowerblue;
+	padding: 5px;
+	letter-spacing: 2px;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+a, a:active, a:link, a:visited  {
+	color: cornflowerblue;
+	font-weight: bold;
+	text-decoration: none;
+}
+img {
+	max-width: 150px;
+	}
+
+li a:hover{ color: white; }
+
+</style>
+<script type="text/javascript" src="fishyDat.js">//fish character database</script>
+<script>
+
+// Tries to make a wadanohara story gen.png
+// Everything is mostly rodies code bc holy SHIT
+
+var fishyWishy = "fishy";
+var png = true;
+
+//random fish for now!
+
+// grab some info
+function mainFish() {
+randFish=(Math.floor(Math.random()*fishNum.length));
+mainGirlName = fish[randFish].firstName;
+mainGirlTitle1 = fish[randFish].title1;
+mainGirlTitle2 = fish[randFish].title2;
+mainGirlHairColor = fish[randFish].hairColor;
+mainGirlEyeColor = fish[randFish].eyeColor;
+mainGirlUpperClothing = fish[randFish].upperClothing;
+mainGirlLowerClothing = fish[randFish].lowerClothing;
+mainGirlHouseType = fish[randFish].houseType;
+fishyImage = fish[randFish].imgStr;
+}
+
+//Now do the above function!
+mainFish();
+
+//Pull from this array for the secondary girl and her properties
+function secFish() {
+randFish2=(Math.floor(Math.random()*fish.length))
+secGirlName = fish[randFish2].firstName;
+secGirlTitle1 = fish[randFish2].title1
+secGirlTitle2 = fish[randFish2].title2
+secGirlHairColor = fish[randFish2].hairColor
+secGirlEyeColor = fish[randFish2].eyeColor
+secGirlUpperClothing = fish[randFish2].upperClothing
+secGirlLowerClothing = fish[randFish2].lowerClothing
+fishyImage2 = fish[randFish2].imgStr;
+}
+ 
+//Now do the above function!
+secFish();
+
+//Make sure we don't cause a glitch in the Matrix by having two of the same girl wandering around
+while (mainGirlName == secGirlName) {
+    secFish();
+}
+
+// check if sal exists. if so, kick his ass
+if(mainGirlName === "Sal") {
+		fishyWishy = "an asshole";
+		if(secGirlName == "Wadanohara") {
+			var friendFlavor = "greatest unrequeited love"
+			fishyImage2 = "wadar";
+			secGirlTitle2 = "red";
+		} else {
+			if(secGirlName == "Samekichi") {
+				var friendFlavor = "brother"
+			} else {
+				var friendFlavor = "worst enemy"
+			}
+			if(secGirlName == "Fukami") {
+				fishyImage2 = "fuka_";
+			}
+		}
+	}
+	else if(secGirlName === "Sal") {
+		if(mainGirlName == "Wadanohara") {
+			var friendFlavor = "hated bitch"
+			fishyImage = "wadar";
+			mainGirlTitle2 = "red";
+			mainGirlEyeColor = "red";
+		} else {
+			if(mainGirlName == "Samekichi") {
+				var friendFlavor = "brother"
+			} else {
+				var friendFlavor = "worst enemy"
+			}
+			if(mainGirlName == "Fukami") {
+				fishyImage = "fuka_";
+			}
+		}
+	}
+	else {
+	var friendFlavor = "best friend"
+	}
+
+
+function writeUp() {
+// WRITE IT UP HINATA KUN
+	if(png == true) {
+		document.write("<p><img src=\"./png/"+ fishyImage + ".png\" /> <img src=\"./png/"+ fishyImage2 + ".png\" /></p>");
+	} else {
+		document.write("<p><img src=\"./gif/"+ fishyImage + ".gif\" /> <img src=\"./gif/"+ fishyImage2 + ".gif\" /></p>");
+	}	
+	document.write("" + mainGirlName + ", the " + mainGirlTitle2 + " " + mainGirlTitle1 + ", is " + fishyWishy + ". They have " + mainGirlHairColor + " hair and " + mainGirlEyeColor + " eyes. <br> Their " + friendFlavor + " is " + secGirlName + ", a " + secGirlTitle2 + " " + secGirlTitle1 + ".");
+}
+
+// little click battle alerts
+
+function click1() { 
+var mainGirlNameC = mainGirlName.toUpperCase();
+alert("THE " + mainGirlNameC + " IS PLEASED.");
+}
+
+function click1b() { 
+var secGirlNameC = secGirlName.toUpperCase();
+alert("THE " + secGirlNameC + " FEELS WELCOMED.");
+}
+
+
+function click2() { alert(mainGirlName + " and " + secGirlName + " stare at you.\n\"Why are you doing that?\""); }
+
+function click3() { alert(mainGirlName + " is confused!\n" + mainGirlName + " hurts themselves in the confusion!") }
+
+
+
+</script>
+</head>
+<body>
+<div id="container">
+<center><script> writeUp(); </script>
+<p>What will you do?</p></center>
+<ul width="150px" style="margin-left: 30px; margin-right: 30px; text-align: left; font-size: 0.75em;">
+<li><a onClick="click1();">Pet <script>document.write(mainGirlName);</script></a></li>
+<li><a onClick="click1b();">Wave at <script>document.write(secGirlName);</script></a></li>
+<li><a onClick="click2();">Quiver before them.</a></li>
+<li><a onClick="click3();">Curse at them! </a></li>
+<li><a onClick="window.location.reload();">Pick on someone else! </a></li>
+<!--li><a onClick="window.close();">Escape! </a></li-->
+</ul>
+<!-- h6>Code by Jamie</a></h6 -->
+</div>
+</body>
+</html>
